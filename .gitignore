@@ -23,3 +23,47 @@
 *.fls
 *.ilg
 *.ind
+keil project/EventRecorderStub.scvd
+keil project/keil_stm32.ini
+keil project/keil_stm32.ini.bak
+keil project/main.c
+keil project/signals.uvl
+keil project/trampoline_stm32.uvgui.omarm
+keil project/trampoline_stm32.uvguix.AbdelSamea
+keil project/trampoline_stm32.uvguix.Administrator
+keil project/trampoline_stm32.uvguix.omarm
+keil project/trampoline_stm32.uvopt
+keil project/trampoline_stm32.uvoptx
+keil project/trampoline_stm32.uvprojx
+keil project/DebugConfig/Target_1_STM32F407VGTx.dbgconf
+keil project/Listings/trampoline_stm32.map
+keil project/Objects/blink_exe.axf
+keil project/Objects/main.d
+keil project/Objects/stm32f4xx_hal_cortex.d
+keil project/Objects/stm32f4xx_hal_dma_ex.d
+keil project/Objects/stm32f4xx_hal_dma.d
+keil project/Objects/stm32f4xx_hal_gpio.d
+keil project/Objects/stm32f4xx_hal_i2c.d
+keil project/Objects/stm32f4xx_hal_pwr_ex.d
+keil project/Objects/stm32f4xx_hal_pwr.d
+keil project/Objects/stm32f4xx_hal_rcc_ex.d
+keil project/Objects/stm32f4xx_hal_rcc.d
+keil project/Objects/stm32f4xx_hal_spi.d
+keil project/Objects/stm32f4xx_hal_uart.d
+keil project/Objects/stm32f4xx_hal.d
+keil project/Objects/system_stm32f4xx.d
+keil project/Objects/trampoline_stm32.axf
+keil project/Objects/trampoline_stm32.build_log.htm
+keil project/Objects/trampoline_stm32.htm
+keil project/Objects/trampoline_stm32.lnp
+keil project/RTE/CMSIS/RTX_Config.c
+keil project/RTE/CMSIS/RTX_Config.h
+keil project/RTE/Device/STM32F407VGTx/RTE_Device.h
+keil project/RTE/Device/STM32F407VGTx/startup_stm32f407xx.s
+keil project/RTE/Device/STM32F407VGTx/stm32f4xx_hal_conf.h
+keil project/RTE/Device/STM32F407VGTx/system_stm32f4xx.c
+keil project/RTE/_Target_1/RTE_Components.h
+goil-windows/goil-debug.exe
+goil-windows/goil.exe
+IMPORT.md
+.vscode/settings.json

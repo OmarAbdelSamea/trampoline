@@ -419,3 +419,11 @@ SECTIONS {
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
 }
+
+GROUP(
+    libgcc.a
+    libg.a
+    libc.a
+    libm.a
+    libnosys.a
+)

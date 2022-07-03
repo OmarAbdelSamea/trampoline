@@ -3,7 +3,15 @@ IMPLEMENTATION stm32f429 {
     BOOLEAN [
       TRUE {
         ENUM [
-          gpt
+          gpt,
+          spi,
+          V2X_Fac,
+          blink_rte, 
+          rte_util, 
+          SWC1_Led_Test,
+          V2X,
+          ecdsa,
+          v2xFull
         ] LIBRARY[];
       },
       FALSE
@@ -46,6 +54,300 @@ CPU stm32f429 {
     CFILE = "stm32f4xx_tim.c";
   };
 
+
+
+  LIBRARY V2X {
+    PATH = "cortex/armv7em/stm32f429/v2x";
+    CFILE = "Application/ECUAbstraction_SWC/src/ECUAbstraction_SWC.c";
+    CFILE = "Application/GeoMath_SWC/src/GeoMath_SWC.c";
+    CFILE = "Application/Poti_SWC/src/Poti_SWC.c";
+    CFILE = "Application/PseudonymChange_SWC/src/PseudonymChange_SWC.c";
+    CFILE = "Application/V2XDenmLogic_SWC/src/V2XDenmLogic_SWC.c";
+    CFILE = "Application/V2xFac_Facilities_Services_SWC/src/V2xFac_Facilities_Services_SWC.c";
+    CFILE = "Application/V2xM_Management_Services_SWC/src/V2xM_Management_Services_SWC.c";
+    CFILE = "Application/VDP_SWC/src/VDP_SWC.c";
+    CFILE = "asn1c/AesCcmCiphertext.c";
+    CFILE = "asn1c/asn_application.c";
+    CFILE = "asn1c/asn_bit_data.c";
+    CFILE = "asn1c/asn_codecs_prim.c";
+    CFILE = "asn1c/asn_internal.c";
+    CFILE = "asn1c/asn_random_fill.c";
+    CFILE = "asn1c/asn_SEQUENCE_OF.c";
+    CFILE = "asn1c/asn_SET_OF.c";
+    CFILE = "asn1c/BasePublicEncryptionKey.c";
+    CFILE = "asn1c/ber_decoder.c";
+    CFILE = "asn1c/ber_tlv_length.c";
+    CFILE = "asn1c/ber_tlv_tag.c";
+    CFILE = "asn1c/BitmapSsp.c";
+    CFILE = "asn1c/BitmapSspRange.c";
+    CFILE = "asn1c/BIT_STRING.c";
+    CFILE = "asn1c/BIT_STRING_oer.c";
+    CFILE = "asn1c/Certificate.c";
+    CFILE = "asn1c/CertificateBase.c";
+    CFILE = "asn1c/CertificateId.c";
+    CFILE = "asn1c/CertificateType.c";
+    CFILE = "asn1c/certificate_asn1c_api.c";
+    CFILE = "asn1c/CircularRegion.c";
+    CFILE = "asn1c/constraints.c";
+    CFILE = "asn1c/constr_CHOICE.c";
+    CFILE = "asn1c/constr_CHOICE_oer.c";
+    CFILE = "asn1c/constr_SEQUENCE.c";
+    CFILE = "asn1c/constr_SEQUENCE_oer.c";
+    CFILE = "asn1c/constr_SEQUENCE_OF.c";
+    CFILE = "asn1c/constr_SET_OF.c";
+    CFILE = "asn1c/constr_SET_OF_oer.c";
+    CFILE = "asn1c/constr_TYPE.c";
+    CFILE = "asn1c/Countersignature.c";
+    CFILE = "asn1c/CountryAndRegions.c";
+    CFILE = "asn1c/CountryAndSubregions.c";
+    CFILE = "asn1c/CountryOnly.c";
+    CFILE = "asn1c/CrlSeries.c";
+    CFILE = "asn1c/der_encoder.c";
+    CFILE = "asn1c/Duration.c";
+    CFILE = "asn1c/EccP256CurvePoint.c";
+    CFILE = "asn1c/EccP384CurvePoint.c";
+    CFILE = "asn1c/EcdsaP256Signature.c";
+    CFILE = "asn1c/EcdsaP384Signature.c";
+    CFILE = "asn1c/EciesP256EncryptedKey.c";
+    CFILE = "asn1c/Elevation.c";
+    CFILE = "asn1c/EncryptedData.c";
+    CFILE = "asn1c/EncryptedDataEncryptionKey.c";
+    CFILE = "asn1c/EncryptionKey.c";
+    CFILE = "asn1c/EndEntityType.c";
+    CFILE = "asn1c/EtsiTs103097Certificate.c";
+    CFILE = "asn1c/EtsiTs103097Data-Signed.c";
+    CFILE = "asn1c/EtsiTs103097Data-Unsecured.c";
+    CFILE = "asn1c/EtsiTs103097Data.c";
+    CFILE = "asn1c/EtsiTs103097Data_asn1c_api.c";
+    CFILE = "asn1c/ExplicitCertificate.c";
+    CFILE = "asn1c/GeographicRegion.c";
+    CFILE = "asn1c/GroupLinkageValue.c";
+    CFILE = "asn1c/HashAlgorithm.c";
+    CFILE = "asn1c/HashedData.c";
+    CFILE = "asn1c/HashedId10.c";
+    CFILE = "asn1c/HashedId3.c";
+    CFILE = "asn1c/HashedId32.c";
+    CFILE = "asn1c/HashedId8.c";
+    CFILE = "asn1c/HeaderInfo.c";
+    CFILE = "asn1c/Hostname.c";
+    CFILE = "asn1c/IdentifiedRegion.c";
+    CFILE = "asn1c/Ieee1609Dot2Content.c";
+    CFILE = "asn1c/Ieee1609Dot2Data.c";
+    CFILE = "asn1c/ImplicitCertificate.c";
+    CFILE = "asn1c/INTEGER.c";
+    CFILE = "asn1c/INTEGER_oer.c";
+    CFILE = "asn1c/IssuerIdentifier.c";
+    CFILE = "asn1c/IValue.c";
+    CFILE = "asn1c/KnownLatitude.c";
+    CFILE = "asn1c/KnownLongitude.c";
+    CFILE = "asn1c/LaId.c";
+    CFILE = "asn1c/Latitude.c";
+    CFILE = "asn1c/LinkageData.c";
+    CFILE = "asn1c/LinkageSeed.c";
+    CFILE = "asn1c/LinkageValue.c";
+    CFILE = "asn1c/Longitude.c";
+    CFILE = "asn1c/NativeEnumerated.c";
+    CFILE = "asn1c/NativeEnumerated_oer.c";
+    CFILE = "asn1c/NativeInteger.c";
+    CFILE = "asn1c/NativeInteger_oer.c";
+    CFILE = "asn1c/NinetyDegreeInt.c";
+    CFILE = "asn1c/NULL.c";
+    CFILE = "asn1c/OCTET_STRING.c";
+    CFILE = "asn1c/OCTET_STRING_oer.c";
+    CFILE = "asn1c/oer_decoder.c";
+    CFILE = "asn1c/oer_encoder.c";
+    CFILE = "asn1c/oer_support.c";
+    CFILE = "asn1c/OneEightyDegreeInt.c";
+    CFILE = "asn1c/Opaque.c";
+    CFILE = "asn1c/OPEN_TYPE.c";
+    CFILE = "asn1c/OPEN_TYPE_oer.c";
+    CFILE = "asn1c/per_decoder.c";
+    CFILE = "asn1c/per_encoder.c";
+    CFILE = "asn1c/per_opentype.c";
+    CFILE = "asn1c/per_support.c";
+    CFILE = "asn1c/PKRecipientInfo.c";
+    CFILE = "asn1c/PolygonalRegion.c";
+    CFILE = "asn1c/PreSharedKeyRecipientInfo.c";
+    CFILE = "asn1c/Psid.c";
+    CFILE = "asn1c/PsidGroupPermissions.c";
+    CFILE = "asn1c/PsidSsp.c";
+    CFILE = "asn1c/PsidSspRange.c";
+    CFILE = "asn1c/PublicEncryptionKey.c";
+    CFILE = "asn1c/PublicVerificationKey.c";
+    CFILE = "asn1c/RecipientInfo.c";
+    CFILE = "asn1c/RectangularRegion.c";
+    CFILE = "asn1c/RegionAndSubregions.c";
+    CFILE = "asn1c/SequenceOfCertificate.c";
+    CFILE = "asn1c/SequenceOfHashedId3.c";
+    CFILE = "asn1c/SequenceOfIdentifiedRegion.c";
+    CFILE = "asn1c/SequenceOfOctetString.c";
+    CFILE = "asn1c/SequenceOfPsid.c";
+    CFILE = "asn1c/SequenceOfPsidGroupPermissions.c";
+    CFILE = "asn1c/SequenceOfPsidSsp.c";
+    CFILE = "asn1c/SequenceOfPsidSspRange.c";
+    CFILE = "asn1c/SequenceOfRecipientInfo.c";
+    CFILE = "asn1c/SequenceOfRectangularRegion.c";
+    CFILE = "asn1c/SequenceOfRegionAndSubregions.c";
+    CFILE = "asn1c/SequenceOfUint16.c";
+    CFILE = "asn1c/SequenceOfUint8.c";
+    CFILE = "asn1c/ServiceSpecificPermissions.c";
+    CFILE = "asn1c/Signature.c";
+    CFILE = "asn1c/SignedData.c";
+    CFILE = "asn1c/SignedDataPayload.c";
+    CFILE = "asn1c/SignerIdentifier.c";
+    CFILE = "asn1c/SspRange.c";
+    CFILE = "asn1c/SubjectAssurance.c";
+    CFILE = "asn1c/SubjectPermissions.c";
+    CFILE = "asn1c/SymmAlgorithm.c";
+    CFILE = "asn1c/SymmetricCiphertext.c";
+    CFILE = "asn1c/SymmetricEncryptionKey.c";
+    CFILE = "asn1c/SymmRecipientInfo.c";
+    CFILE = "asn1c/ThreeDLocation.c";
+    CFILE = "asn1c/Time32.c";
+    CFILE = "asn1c/Time64.c";
+    CFILE = "asn1c/ToBeSignedCertificate.c";
+    CFILE = "asn1c/ToBeSignedData.c";
+    CFILE = "asn1c/TwoDLocation.c";
+    CFILE = "asn1c/Uint16.c";
+    CFILE = "asn1c/Uint3.c";
+    CFILE = "asn1c/Uint32.c";
+    CFILE = "asn1c/Uint64.c";
+    CFILE = "asn1c/Uint8.c";
+    CFILE = "asn1c/UnknownLatitude.c";
+    CFILE = "asn1c/UnknownLongitude.c";
+    CFILE = "asn1c/UTF8String.c";
+    CFILE = "asn1c/ValidityPeriod.c";
+    CFILE = "asn1c/VerificationKeyIndicator.c";
+    CFILE = "asn1c/xer_decoder.c";
+    CFILE = "asn1c/xer_encoder.c";
+    CFILE = "asn1c/xer_support.c";
+    CFILE = "CryIf/src/CryIf.c";
+    CFILE = "CryIf/src/CryIf_Cfg.c";
+    CFILE = "Crypto/src/Crypto.c";
+    CFILE = "Crypto/src/Crypto_Cfg.c";
+    CFILE = "Crypto_ecdsa/bignum.c";
+    CFILE = "Crypto_ecdsa/Crypto_ECDSA_Signature_Generate.c";
+    CFILE = "Crypto_ecdsa/Crypto_ECDSA_Signature_Verify.c";
+    CFILE = "Crypto_ecdsa/ecdsa.c";
+    CFILE = "Crypto_ecdsa/ecp.c";
+    CFILE = "Crypto_ecdsa/ecp_curves.c";
+    CFILE = "Crypto_ecdsa/hmac_drbg.c";
+    CFILE = "Crypto_ecdsa/md.c";
+    CFILE = "Crypto_ecdsa/md_wrap.c";
+    CFILE = "Crypto_ecdsa/memory_buffer_alloc.c";
+    CFILE = "Crypto_ecdsa/platform_util.c";
+    CFILE = "Crypto_ecdsa/sha256.c";
+    CFILE = "CSM/src/Csm.c";
+    CFILE = "CSM/src/Csm_cfg.c";
+    CFILE = "DET/src/Det.c";
+    CFILE = "EthSM/src/EthSM.c";
+    CFILE = "FPU/src/Fpu.c";
+    CFILE = "NvM/src/NvM.c";
+    CFILE = "NvM/src/NvM_Cfg.c";
+    CFILE = "RTE/RTE_ECUAbstraction_SWC/src/Rte_ECUAbstraction_SWC.c";
+    CFILE = "RTE/RTE_GeoMath_SWC/src/Rte_GeoMath_SWC.c";
+    CFILE = "RTE/RTE_Poti_SWC/src/Rte_Poti_SWC.c";
+    CFILE = "RTE/RTE_PseudonymChange_SWC/src/Rte_PseudonymChange_SWC.c";
+    CFILE = "RTE/RTE_V2XDenmLogic_SWC/src/Rte_V2XDenmLogic_SWC.c";
+    CFILE = "RTE/RTE_V2xFac_Facilities_Services_SWC/src/Rte_V2xFac_Facilities_Services_SWC.c";
+    CFILE = "RTE/RTE_V2xM_Management_Services_SWC/src/Rte_V2xM_Management_Services_SWC.c";
+    CFILE = "RTE/RTE_VDP_SWC/src/Rte_VDP_SWC.c";
+    CFILE = "RTE/src/RTE_Interfaces.c";
+    CFILE = "SPI/src/Gpio.c";
+    CFILE = "SPI/src/Nvic.c";
+    CFILE = "SPI/src/PLL.c";
+    CFILE = "SPI/src/SchM_Spi.c";
+    CFILE = "SPI/src/Spi.c";
+    CFILE = "SPI/src/Spi_Externals.c";
+    CFILE = "SPI/src/Spi_PBcfg.c";
+    CFILE = "USART/Src/stm32f429_USART_driver.c";
+    CFILE = "V2xBtp/src/V2xBtp.c";
+    CFILE = "V2xEthIf/src/EthIf.c";
+    CFILE = "V2xEthIf/src/EthIf_PBcfg.c";
+    CFILE = "V2xFac/asn1scc/asn1crt.c";
+    CFILE = "V2xFac/asn1scc/asn1crt_encoding.c";
+    CFILE = "V2xFac/asn1scc/asn1crt_encoding_uper.c";
+    CFILE = "V2xFac/asn1scc/CAM.c";
+    CFILE = "V2xFac/asn1scc/CommenSPaT_MAP.c";
+    CFILE = "V2xFac/asn1scc/DENM.c";
+    CFILE = "V2xFac/asn1scc/ITS.c";
+    CFILE = "V2xFac/asn1scc/MAPEM.c";
+    CFILE = "V2xFac/asn1scc/SPAT.c";
+    CFILE = "V2xFac/src/V2xFac.c";
+    CFILE = "V2xGn/src/SchM_V2xGn.c";
+    CFILE = "V2xGn/src/V2xGn.c";
+    CFILE = "V2xGn/src/V2xGn_V2xM.c";
+    CFILE = "V2xM/src/SchM_V2xM.c";
+    CFILE = "V2xM/src/V2xM.c";
+    CFILE = "V2xM/src/V2xM_App.c";
+    CFILE = "V2xM/src/V2xM_Cfg.c";
+    CFILE = "V2xM/src/V2xM_V2xGn.c";
+    CFILE = "V2xWEth/src/Defregmentation.c";
+    CFILE = "V2xWEth/src/fregmentation.c";
+    CFILE = "V2xWEth/src/nrf.c";
+    CFILE = "V2xWEth/src/WEth.c";
+    CFILE = "V2xWEth/src/Weth_PBcfg.c";
+
+    // CFILE = "Application/LDM_SWC/src/LDM_SWC.c";
+    // CFILE = "RTE/RTE_LDM_SWC/src/Rte_LDM_SWC.c";
+    // CFILE = "Application/V2x_Control_SWC/src/V2xControl_SWC.c";
+    // CFILE = "RTE/RTE_V2xControl_SWC/src/Rte_V2XControl_SWC.c";
+    // CFILE = "SPI/src/Interrupt.c";
+  };
+
+  LIBRARY ecdsa {
+    PATH = "cortex/armv7em/stm32f429/ECDSA";
+    CFILE = "auxo.c";
+    CFILE = "ecdsa.c";
+    CFILE = "rand.c";
+    CFILE = "secp256k1.c";
+    CFILE = "sha256.c";
+
+    CHEADER = "auxo.h";
+    CHEADER = "ecdsa.h";
+    CHEADER = "rand.h";
+    CHEADER = "secp256k1.h";
+  };
+
+  LIBRARY spi {
+    PATH = "cortex/armv7em/stm32f429/STM32F4xx_StdPeriph_Driver";
+    CHEADER = "stm32f4xx_spi.h";
+    CFILE = "stm32f4xx_spi.c";
+  };
+
+  LIBRARY uart_std {
+    PATH = "cortex/armv7em/stm32f429/uart";
+    CHEADER = "stm32f4xx_usart.h";
+    CHEADER = "stm32f4xx_usart.h";
+  };
+
+  LIBRARY uart {
+    PATH = "cortex/armv7em/stm32f429/uart";
+    CHEADER = "uart.h";
+    CFILE = "uart.c";
+  };
+
+  LIBRARY blink_rte { 
+    PATH = "cortex/armv7em/stm32f429/blink_rte";
+    CFILE = "Algorithm.c";
+  };
+
+  LIBRARY rte_util {
+    PATH = "cortex/armv7em/stm32f429/blink_rte/rte_util";
+    CFILE = "DummyProxy.c";
+    CHEADER = "Rte.h";
+    CHEADER = "Std_Types.h";
+  };
+
+  LIBRARY SWC1_Led_Test {
+    PATH = "cortex/armv7em/stm32f429/blink_rte/SWC1_Led_Test";
+    CFILE = "ARUnit_SWC1_Led_Test.c";
+    CHEADER = "ARUnit_SWC1_Led_Test.h";
+    CHEADER = "Rte_SWC1_Led_Test.h";
+    CFILE = "Rte_SWC1_Led_Test.c";
+    CHEADER = "Rte_Type.h";
+  };
+        
   CORTEX stm32f429 {
     PRIO_BITS = 4;
     CLOCK = 180000000;

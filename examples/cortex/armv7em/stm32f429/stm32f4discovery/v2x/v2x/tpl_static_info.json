@@ -1,0 +1,173 @@
+
+{
+  "alarm" : 
+  [
+    
+    {
+      "ACTION" : "ACTIVATETASK",
+      "ACTION_S" : 
+      {
+        "TASK" : "Task_100ms"
+      },
+      "AUTOSTART" : "true",
+      "AUTOSTART_S" : 
+      {
+        "ALARMTIME" : 2770,
+        "APPMODE" : 
+        [
+          
+          {
+            "VALUE" : "std"
+          }
+        ],
+        "CYCLETIME" : 4000
+      },
+      "COUNTER" : "SystemCounter",
+      "NAME" : "Alarm_100ms"
+    },    
+    {
+      "ACTION" : "ACTIVATETASK",
+      "ACTION_S" : 
+      {
+        "TASK" : "Task_1ms"
+      },
+      "AUTOSTART" : "true",
+      "AUTOSTART_S" : 
+      {
+        "ALARMTIME" : 10,
+        "APPMODE" : 
+        [
+          
+          {
+            "VALUE" : "std"
+          }
+        ],
+        "CYCLETIME" : 4000
+      },
+      "COUNTER" : "SystemCounter",
+      "NAME" : "Alarm_1ms"
+    },    
+    {
+      "ACTION" : "ACTIVATETASK",
+      "ACTION_S" : 
+      {
+        "TASK" : "Task_50ms"
+      },
+      "AUTOSTART" : "true",
+      "AUTOSTART_S" : 
+      {
+        "ALARMTIME" : 270,
+        "APPMODE" : 
+        [
+          
+          {
+            "VALUE" : "std"
+          }
+        ],
+        "CYCLETIME" : 4000
+      },
+      "COUNTER" : "SystemCounter",
+      "NAME" : "Alarm_50ms"
+    }
+  ],
+  "event" : [],
+  "ioc" : [],
+  "isr" : 
+  [
+    
+    {
+      "CATEGORY" : 1,
+      "KIND" : "ISR",
+      "NAME" : "isr_tim4",
+      "PRIORITY" : 6,
+      "SOURCE" : "TIM4_IRQ",
+      "STACKSIZE" : 300
+    }
+  ],
+  "message" : [],
+  "resource" : 
+  [
+    
+    {
+      "ISRUSAGE" : [],
+      "KIND" : "Resource",
+      "NAME" : "INTERNAL_RES_SCHEDULER",
+      "PRIORITY" : 3,
+      "RESOURCEPROPERTY" : "INTERNAL",
+      "TASKUSAGE" : 
+      [
+        
+        {
+          "VALUE" : "Task_100ms"
+        },        
+        {
+          "VALUE" : "Task_1ms"
+        },        
+        {
+          "VALUE" : "Task_50ms"
+        }
+      ]
+    }
+  ],
+  "task" : 
+  [
+    
+    {
+      "ACTIVATION" : 1,
+      "AUTOSTART" : "false",
+      "KIND" : "Task",
+      "NAME" : "Task_1ms",
+      "NONPREEMPTABLE" : "true",
+      "PRIORITY" : 1,
+      "RESOURCE" : 
+      [
+        
+        {
+          "VALUE" : "INTERNAL_RES_SCHEDULER"
+        }
+      ],
+      "SCHEDULE" : "NON",
+      "STACKSIZE" : 5000,
+      "USEFLOAT" : "false",
+      "USEINTERNALRESOURCE" : "false"
+    },    
+    {
+      "ACTIVATION" : 1,
+      "AUTOSTART" : "false",
+      "KIND" : "Task",
+      "NAME" : "Task_50ms",
+      "NONPREEMPTABLE" : "true",
+      "PRIORITY" : 2,
+      "RESOURCE" : 
+      [
+        
+        {
+          "VALUE" : "INTERNAL_RES_SCHEDULER"
+        }
+      ],
+      "SCHEDULE" : "NON",
+      "STACKSIZE" : 30000,
+      "USEFLOAT" : "false",
+      "USEINTERNALRESOURCE" : "false"
+    },    
+    {
+      "ACTIVATION" : 1,
+      "AUTOSTART" : "false",
+      "KIND" : "Task",
+      "NAME" : "Task_100ms",
+      "NONPREEMPTABLE" : "true",
+      "PRIORITY" : 2,
+      "RESOURCE" : 
+      [
+        
+        {
+          "VALUE" : "INTERNAL_RES_SCHEDULER"
+        }
+      ],
+      "SCHEDULE" : "NON",
+      "STACKSIZE" : 30000,
+      "USEFLOAT" : "false",
+      "USEINTERNALRESOURCE" : "false"
+    }
+  ]
+}

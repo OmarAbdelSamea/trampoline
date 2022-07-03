@@ -1,0 +1,71 @@
+OIL_VERSION = "2.5";
+
+IMPLEMENTATION trampoline {
+    /* This fix the default STACKSIZE of tasks */
+    TASK {
+        UINT32 STACKSIZE = 100000 ;
+    } ;
+
+    /* This fix the default STACKSIZE of ISRs */
+    ISR {
+        UINT32 STACKSIZE = 200 ;
+    } ;
+};
+
+CPU uart_prescan {
+  OS config {
+    STATUS = EXTENDED;
+    
+    BUILD = TRUE {
+      TRAMPOLINE_BASE_PATH = "../../../../../..";
+      APP_SRC = "uart_prescan.c";
+      APP_NAME = "uart_prescan_exe";
+      CFLAGS  = "-O0"; 
+      LDFLAGS = "-Map=uart_prescan.map";
+      COMPILER = "arm-none-eabi-gcc";
+      ASSEMBLER = "arm-none-eabi-as";
+      LINKER = "arm-none-eabi-ld";
+      COPIER = "arm-none-eabi-objcopy";
+      SYSTEM = PYTHON;
+      LIBRARY = usart;
+    };
+    SYSTEM_CALL = TRUE;
+    MEMMAP = TRUE {
+      COMPILER = gcc;
+      LINKER = gnu_ld { SCRIPT = "script.ld"; };
+      ASSEMBLER = gnu_as;
+      MEMORY_PROTECTION = FALSE;
+    };
+  };
+  
+  APPMODE std {};
+
+  TASK blink {
+    PRIORITY = 1;
+    AUTOSTART = FALSE;
+    ACTIVATION = 1;
+    SCHEDULE = FULL;
+  };
+
+  ALARM blink_blink {
+    COUNTER = SystemCounter;
+    ACTION = ACTIVATETASK {
+      TASK = blink;
+    };
+    AUTOSTART = TRUE {
+      APPMODE = std;
+      ALARMTIME = 10;
+      CYCLETIME = 100000;
+    };
+  };
+
+  /*
+   * Connect a category 2 ISR to the user button (the blue one)
+   * of the board.
+   * 
+   * The description allows to program the GPIO, the corresponding
+   * external interrupt line and the NVIC
+   * 
+   * 
+   */
+};

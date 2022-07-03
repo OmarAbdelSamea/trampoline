@@ -1,0 +1,96 @@
+OIL_VERSION = "2.5";
+
+IMPLEMENTATION trampoline {
+
+    /* This fix the default STACKSIZE of tasks */
+    TASK {
+        UINT32 STACKSIZE = 1000 ;
+    } ;
+
+    /* This fix the default STACKSIZE of ISRs */
+    ISR {
+        UINT32 STACKSIZE = 300 ;
+    } ;
+};
+
+CPU v2x {
+  OS config {
+    STATUS = EXTENDED;
+    PRETASKHOOK = FALSE;
+    POSTTASKHOOK = FALSE;
+    PAINT_STACK = FALSE;
+    PAINT_REGISTERS = FALSE;
+    BUILD = TRUE {
+      TRAMPOLINE_BASE_PATH = "../../../../../..";
+      APP_SRC = "v2x.c";
+      APP_NAME = "v2x_rec.elf";
+      CFLAGS  = "-O0"; 
+      LDFLAGS = "-Map=v2x.map";
+      COMPILER = "arm-none-eabi-gcc";
+      ASSEMBLER = "arm-none-eabi-as";
+      LINKER = "arm-none-eabi-ld";
+      COPIER = "arm-none-eabi-objcopy";
+      SYSTEM = PYTHON;
+      LIBRARY = V2X;
+    };
+    SYSTEM_CALL = TRUE;
+    MEMMAP = TRUE {
+      COMPILER = gcc;
+      LINKER = gnu_ld { SCRIPT = "script.ld"; };
+      ASSEMBLER = gnu_as;
+      MEMORY_PROTECTION = FALSE;
+    };
+  };
+
+  APPMODE std {};
+
+  TASK Task_prescan {
+    PRIORITY = 0;
+    AUTOSTART = FALSE;
+    ACTIVATION = 1;
+    SCHEDULE = NON; 
+    // STACKSIZE = 100;
+  };
+
+  TASK Task_receive {
+    PRIORITY = 1;
+    AUTOSTART = TRUE {
+      APPMODE = std;
+    };
+    ACTIVATION = 1;
+    SCHEDULE = NON; 
+    STACKSIZE = 50000;
+  };
+
+  // ALARM Alarm_prescan {
+  //   COUNTER = SystemCounter;
+  //   ACTION = ACTIVATETASK {
+  //     TASK = Task_prescan;
+  //   };
+  //   AUTOSTART = TRUE {
+  //     APPMODE = std;
+  //     ALARMTIME = 10;
+  //     CYCLETIME = 1000;
+  //   };
+  // };
+
+  ISR isr_tim4 {
+    CATEGORY = 1;
+    PRIORITY = 1;
+    SOURCE = TIM4_IRQ;
+  };
+
+  ISR isr_nrf {
+    CATEGORY = 1;
+    PRIORITY = 1;
+    // SOURCE = EXTI0_IRQ {
+    //   PINON0 = PA0 {
+    //     TRIGGER = FALLING;
+    //     PULL = UP;
+    //   };
+    // };
+    SOURCE = EXTI0_IRQ { PIN = PA0 { TRIGGER = FALLING; PULL = UP; }; };
+  };
+
+};
+

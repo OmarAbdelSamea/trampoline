@@ -2049,8 +2049,8 @@ typedef struct
 #define WWDG                ((WWDG_TypeDef *) WWDG_BASE)
 #define IWDG                ((IWDG_TypeDef *) IWDG_BASE)
 #define I2S2ext             ((SPI_TypeDef *) I2S2ext_BASE)
-#define SPI2                ((SPI_TypeDef *) SPI2_BASE)
-#define SPI3                ((SPI_TypeDef *) SPI3_BASE)
+// #define SPI2                ((SPI_TypeDef *) SPI2_BASE)
+// #define SPI3                ((SPI_TypeDef *) SPI3_BASE)
 #if defined(STM32F446xx)
 #define SPDIFRX             ((SPDIFRX_TypeDef *) SPDIFRX_BASE)
 #endif /* STM32F446xx */
@@ -2086,15 +2086,15 @@ typedef struct
 #define ADC2                ((ADC_TypeDef *) ADC2_BASE)
 #define ADC3                ((ADC_TypeDef *) ADC3_BASE)
 #define SDIO                ((SDIO_TypeDef *) SDIO_BASE)
-#define SPI1                ((SPI_TypeDef *) SPI1_BASE)
-#define SPI4                ((SPI_TypeDef *) SPI4_BASE)
+// #define SPI1                ((SPI_TypeDef *) SPI1_BASE)
+// #define SPI4                ((SPI_TypeDef *) SPI4_BASE)
 #define SYSCFG              ((SYSCFG_TypeDef *) SYSCFG_BASE)
 #define EXTI                ((EXTI_TypeDef *) EXTI_BASE)
 #define TIM9                ((TIM_TypeDef *) TIM9_BASE)
 #define TIM10               ((TIM_TypeDef *) TIM10_BASE)
 #define TIM11               ((TIM_TypeDef *) TIM11_BASE)
-#define SPI5                ((SPI_TypeDef *) SPI5_BASE)
-#define SPI6                ((SPI_TypeDef *) SPI6_BASE)
+// #define SPI5                ((SPI_TypeDef *) SPI5_BASE)
+// #define SPI6                ((SPI_TypeDef *) SPI6_BASE)
 #define SAI1                ((SAI_TypeDef *) SAI1_BASE)
 #define SAI1_Block_A        ((SAI_Block_TypeDef *)SAI1_Block_A_BASE)
 #define SAI1_Block_B        ((SAI_Block_TypeDef *)SAI1_Block_B_BASE)
@@ -4539,7 +4539,7 @@ typedef struct
 #define FLASH_ACR_LATENCY_2WS                ((uint32_t)0x00000002)
 #define FLASH_ACR_LATENCY_3WS                ((uint32_t)0x00000003)
 #define FLASH_ACR_LATENCY_4WS                ((uint32_t)0x00000004)
-#define FLASH_ACR_LATENCY_5WS                ((uint32_t)0x00000005)
+// #define FLASH_ACR_LATENCY_5WS                ((uint32_t)0x00000005)
 #define FLASH_ACR_LATENCY_6WS                ((uint32_t)0x00000006)
 #define FLASH_ACR_LATENCY_7WS                ((uint32_t)0x00000007)
 #define FLASH_ACR_LATENCY_8WS                ((uint32_t)0x00000008)
@@ -10119,82 +10119,82 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 /*******************  Bit definition for SPI_CR1 register  ********************/
-#define  SPI_CR1_CPHA                        ((uint16_t)0x0001)            /*!<Clock Phase      */
-#define  SPI_CR1_CPOL                        ((uint16_t)0x0002)            /*!<Clock Polarity   */
-#define  SPI_CR1_MSTR                        ((uint16_t)0x0004)            /*!<Master Selection */
+// #define  SPI_CR1_CPHA                        ((uint16_t)0x0001)            /*!<Clock Phase      */
+// #define  SPI_CR1_CPOL                        ((uint16_t)0x0002)            /*!<Clock Polarity   */
+// #define  SPI_CR1_MSTR                        ((uint16_t)0x0004)            /*!<Master Selection */
 
-#define  SPI_CR1_BR                          ((uint16_t)0x0038)            /*!<BR[2:0] bits (Baud Rate Control) */
-#define  SPI_CR1_BR_0                        ((uint16_t)0x0008)            /*!<Bit 0 */
-#define  SPI_CR1_BR_1                        ((uint16_t)0x0010)            /*!<Bit 1 */
-#define  SPI_CR1_BR_2                        ((uint16_t)0x0020)            /*!<Bit 2 */
+// #define  SPI_CR1_BR                          ((uint16_t)0x0038)            /*!<BR[2:0] bits (Baud Rate Control) */
+// #define  SPI_CR1_BR_0                        ((uint16_t)0x0008)            /*!<Bit 0 */
+// #define  SPI_CR1_BR_1                        ((uint16_t)0x0010)            /*!<Bit 1 */
+// #define  SPI_CR1_BR_2                        ((uint16_t)0x0020)            /*!<Bit 2 */
 
-#define  SPI_CR1_SPE                         ((uint16_t)0x0040)            /*!<SPI Enable                          */
-#define  SPI_CR1_LSBFIRST                    ((uint16_t)0x0080)            /*!<Frame Format                        */
-#define  SPI_CR1_SSI                         ((uint16_t)0x0100)            /*!<Internal slave select               */
-#define  SPI_CR1_SSM                         ((uint16_t)0x0200)            /*!<Software slave management           */
-#define  SPI_CR1_RXONLY                      ((uint16_t)0x0400)            /*!<Receive only                        */
-#define  SPI_CR1_DFF                         ((uint16_t)0x0800)            /*!<Data Frame Format                   */
-#define  SPI_CR1_CRCNEXT                     ((uint16_t)0x1000)            /*!<Transmit CRC next                   */
-#define  SPI_CR1_CRCEN                       ((uint16_t)0x2000)            /*!<Hardware CRC calculation enable     */
-#define  SPI_CR1_BIDIOE                      ((uint16_t)0x4000)            /*!<Output enable in bidirectional mode */
-#define  SPI_CR1_BIDIMODE                    ((uint16_t)0x8000)            /*!<Bidirectional data mode enable      */
+// #define  SPI_CR1_SPE                         ((uint16_t)0x0040)            /*!<SPI Enable                          */
+// #define  SPI_CR1_LSBFIRST                    ((uint16_t)0x0080)            /*!<Frame Format                        */
+// #define  SPI_CR1_SSI                         ((uint16_t)0x0100)            /*!<Internal slave select               */
+// #define  SPI_CR1_SSM                         ((uint16_t)0x0200)            /*!<Software slave management           */
+// #define  SPI_CR1_RXONLY                      ((uint16_t)0x0400)            /*!<Receive only                        */
+// #define  SPI_CR1_DFF                         ((uint16_t)0x0800)            /*!<Data Frame Format                   */
+// #define  SPI_CR1_CRCNEXT                     ((uint16_t)0x1000)            /*!<Transmit CRC next                   */
+// #define  SPI_CR1_CRCEN                       ((uint16_t)0x2000)            /*!<Hardware CRC calculation enable     */
+// #define  SPI_CR1_BIDIOE                      ((uint16_t)0x4000)            /*!<Output enable in bidirectional mode */
+// #define  SPI_CR1_BIDIMODE                    ((uint16_t)0x8000)            /*!<Bidirectional data mode enable      */
 
-/*******************  Bit definition for SPI_CR2 register  ********************/
-#define  SPI_CR2_RXDMAEN                     ((uint8_t)0x01)               /*!<Rx Buffer DMA Enable                 */
-#define  SPI_CR2_TXDMAEN                     ((uint8_t)0x02)               /*!<Tx Buffer DMA Enable                 */
-#define  SPI_CR2_SSOE                        ((uint8_t)0x04)               /*!<SS Output Enable                     */
-#define  SPI_CR2_ERRIE                       ((uint8_t)0x20)               /*!<Error Interrupt Enable               */
-#define  SPI_CR2_RXNEIE                      ((uint8_t)0x40)               /*!<RX buffer Not Empty Interrupt Enable */
-#define  SPI_CR2_TXEIE                       ((uint8_t)0x80)               /*!<Tx buffer Empty Interrupt Enable     */
+// /*******************  Bit definition for SPI_CR2 register  ********************/
+// #define  SPI_CR2_RXDMAEN                     ((uint8_t)0x01)               /*!<Rx Buffer DMA Enable                 */
+// #define  SPI_CR2_TXDMAEN                     ((uint8_t)0x02)               /*!<Tx Buffer DMA Enable                 */
+// #define  SPI_CR2_SSOE                        ((uint8_t)0x04)               /*!<SS Output Enable                     */
+// #define  SPI_CR2_ERRIE                       ((uint8_t)0x20)               /*!<Error Interrupt Enable               */
+// #define  SPI_CR2_RXNEIE                      ((uint8_t)0x40)               /*!<RX buffer Not Empty Interrupt Enable */
+// #define  SPI_CR2_TXEIE                       ((uint8_t)0x80)               /*!<Tx buffer Empty Interrupt Enable     */
 
-/********************  Bit definition for SPI_SR register  ********************/
-#define  SPI_SR_RXNE                         ((uint8_t)0x01)               /*!<Receive buffer Not Empty */
-#define  SPI_SR_TXE                          ((uint8_t)0x02)               /*!<Transmit buffer Empty    */
-#define  SPI_SR_CHSIDE                       ((uint8_t)0x04)               /*!<Channel side             */
-#define  SPI_SR_UDR                          ((uint8_t)0x08)               /*!<Underrun flag            */
-#define  SPI_SR_CRCERR                       ((uint8_t)0x10)               /*!<CRC Error flag           */
-#define  SPI_SR_MODF                         ((uint8_t)0x20)               /*!<Mode fault               */
-#define  SPI_SR_OVR                          ((uint8_t)0x40)               /*!<Overrun flag             */
-#define  SPI_SR_BSY                          ((uint8_t)0x80)               /*!<Busy flag                */
+// /********************  Bit definition for SPI_SR register  ********************/
+// #define  SPI_SR_RXNE                         ((uint8_t)0x01)               /*!<Receive buffer Not Empty */
+// #define  SPI_SR_TXE                          ((uint8_t)0x02)               /*!<Transmit buffer Empty    */
+// #define  SPI_SR_CHSIDE                       ((uint8_t)0x04)               /*!<Channel side             */
+// #define  SPI_SR_UDR                          ((uint8_t)0x08)               /*!<Underrun flag            */
+// #define  SPI_SR_CRCERR                       ((uint8_t)0x10)               /*!<CRC Error flag           */
+// #define  SPI_SR_MODF                         ((uint8_t)0x20)               /*!<Mode fault               */
+// #define  SPI_SR_OVR                          ((uint8_t)0x40)               /*!<Overrun flag             */
+// #define  SPI_SR_BSY                          ((uint8_t)0x80)               /*!<Busy flag                */
 
-/********************  Bit definition for SPI_DR register  ********************/
-#define  SPI_DR_DR                           ((uint16_t)0xFFFF)            /*!<Data Register           */
+// /********************  Bit definition for SPI_DR register  ********************/
+// #define  SPI_DR_DR                           ((uint16_t)0xFFFF)            /*!<Data Register           */
 
-/*******************  Bit definition for SPI_CRCPR register  ******************/
-#define  SPI_CRCPR_CRCPOLY                   ((uint16_t)0xFFFF)            /*!<CRC polynomial register */
+// /*******************  Bit definition for SPI_CRCPR register  ******************/
+// #define  SPI_CRCPR_CRCPOLY                   ((uint16_t)0xFFFF)            /*!<CRC polynomial register */
 
-/******************  Bit definition for SPI_RXCRCR register  ******************/
-#define  SPI_RXCRCR_RXCRC                    ((uint16_t)0xFFFF)            /*!<Rx CRC Register         */
+// /******************  Bit definition for SPI_RXCRCR register  ******************/
+// #define  SPI_RXCRCR_RXCRC                    ((uint16_t)0xFFFF)            /*!<Rx CRC Register         */
 
-/******************  Bit definition for SPI_TXCRCR register  ******************/
-#define  SPI_TXCRCR_TXCRC                    ((uint16_t)0xFFFF)            /*!<Tx CRC Register         */
+// /******************  Bit definition for SPI_TXCRCR register  ******************/
+// #define  SPI_TXCRCR_TXCRC                    ((uint16_t)0xFFFF)            /*!<Tx CRC Register         */
 
-/******************  Bit definition for SPI_I2SCFGR register  *****************/
-#define  SPI_I2SCFGR_CHLEN                   ((uint16_t)0x0001)            /*!<Channel length (number of bits per audio channel) */
+// /******************  Bit definition for SPI_I2SCFGR register  *****************/
+// #define  SPI_I2SCFGR_CHLEN                   ((uint16_t)0x0001)            /*!<Channel length (number of bits per audio channel) */
 
-#define  SPI_I2SCFGR_DATLEN                  ((uint16_t)0x0006)            /*!<DATLEN[1:0] bits (Data length to be transferred)  */
-#define  SPI_I2SCFGR_DATLEN_0                ((uint16_t)0x0002)            /*!<Bit 0 */
-#define  SPI_I2SCFGR_DATLEN_1                ((uint16_t)0x0004)            /*!<Bit 1 */
+// #define  SPI_I2SCFGR_DATLEN                  ((uint16_t)0x0006)            /*!<DATLEN[1:0] bits (Data length to be transferred)  */
+// #define  SPI_I2SCFGR_DATLEN_0                ((uint16_t)0x0002)            /*!<Bit 0 */
+// #define  SPI_I2SCFGR_DATLEN_1                ((uint16_t)0x0004)            /*!<Bit 1 */
 
-#define  SPI_I2SCFGR_CKPOL                   ((uint16_t)0x0008)            /*!<steady state clock polarity               */
+// #define  SPI_I2SCFGR_CKPOL                   ((uint16_t)0x0008)            /*!<steady state clock polarity               */
 
-#define  SPI_I2SCFGR_I2SSTD                  ((uint16_t)0x0030)            /*!<I2SSTD[1:0] bits (I2S standard selection) */
-#define  SPI_I2SCFGR_I2SSTD_0                ((uint16_t)0x0010)            /*!<Bit 0 */
-#define  SPI_I2SCFGR_I2SSTD_1                ((uint16_t)0x0020)            /*!<Bit 1 */
+// #define  SPI_I2SCFGR_I2SSTD                  ((uint16_t)0x0030)            /*!<I2SSTD[1:0] bits (I2S standard selection) */
+// #define  SPI_I2SCFGR_I2SSTD_0                ((uint16_t)0x0010)            /*!<Bit 0 */
+// #define  SPI_I2SCFGR_I2SSTD_1                ((uint16_t)0x0020)            /*!<Bit 1 */
 
-#define  SPI_I2SCFGR_PCMSYNC                 ((uint16_t)0x0080)            /*!<PCM frame synchronization                 */
+// #define  SPI_I2SCFGR_PCMSYNC                 ((uint16_t)0x0080)            /*!<PCM frame synchronization                 */
 
-#define  SPI_I2SCFGR_I2SCFG                  ((uint16_t)0x0300)            /*!<I2SCFG[1:0] bits (I2S configuration mode) */
-#define  SPI_I2SCFGR_I2SCFG_0                ((uint16_t)0x0100)            /*!<Bit 0 */
-#define  SPI_I2SCFGR_I2SCFG_1                ((uint16_t)0x0200)            /*!<Bit 1 */
+// #define  SPI_I2SCFGR_I2SCFG                  ((uint16_t)0x0300)            /*!<I2SCFG[1:0] bits (I2S configuration mode) */
+// #define  SPI_I2SCFGR_I2SCFG_0                ((uint16_t)0x0100)            /*!<Bit 0 */
+// #define  SPI_I2SCFGR_I2SCFG_1                ((uint16_t)0x0200)            /*!<Bit 1 */
 
-#define  SPI_I2SCFGR_I2SE                    ((uint16_t)0x0400)            /*!<I2S Enable         */
-#define  SPI_I2SCFGR_I2SMOD                  ((uint16_t)0x0800)            /*!<I2S mode selection */
+// #define  SPI_I2SCFGR_I2SE                    ((uint16_t)0x0400)            /*!<I2S Enable         */
+// #define  SPI_I2SCFGR_I2SMOD                  ((uint16_t)0x0800)            /*!<I2S mode selection */
 
-/******************  Bit definition for SPI_I2SPR register  *******************/
-#define  SPI_I2SPR_I2SDIV                    ((uint16_t)0x00FF)            /*!<I2S Linear prescaler         */
-#define  SPI_I2SPR_ODD                       ((uint16_t)0x0100)            /*!<Odd factor for the prescaler */
-#define  SPI_I2SPR_MCKOE                     ((uint16_t)0x0200)            /*!<Master Clock Output Enable   */
+// /******************  Bit definition for SPI_I2SPR register  *******************/
+// #define  SPI_I2SPR_I2SDIV                    ((uint16_t)0x00FF)            /*!<I2S Linear prescaler         */
+// #define  SPI_I2SPR_ODD                       ((uint16_t)0x0100)            /*!<Odd factor for the prescaler */
+// #define  SPI_I2SPR_MCKOE                     ((uint16_t)0x0200)            /*!<Master Clock Output Enable   */
 
 /******************************************************************************/
 /*                                                                            */

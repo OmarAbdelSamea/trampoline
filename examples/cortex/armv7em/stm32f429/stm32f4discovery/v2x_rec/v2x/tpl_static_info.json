@@ -1,0 +1,109 @@
+
+{
+  "alarm" : [],
+  "event" : [],
+  "ioc" : [],
+  "isr" : 
+  [
+    
+    {
+      "CATEGORY" : 1,
+      "KIND" : "ISR",
+      "NAME" : "isr_nrf",
+      "PRIORITY" : 6,
+      "SOURCE" : "EXTI0_IRQ",
+      "SOURCE_S" : 
+      {
+        "PIN" : "PA0",
+        "PIN_S" : 
+        {
+          "PULL" : "UP",
+          "TRIGGER" : "FALLING"
+        }
+      },
+      "STACKSIZE" : 300
+    },    
+    {
+      "CATEGORY" : 1,
+      "KIND" : "ISR",
+      "NAME" : "isr_tim4",
+      "PRIORITY" : 6,
+      "SOURCE" : "TIM4_IRQ",
+      "STACKSIZE" : 300
+    }
+  ],
+  "message" : [],
+  "resource" : 
+  [
+    
+    {
+      "ISRUSAGE" : [],
+      "KIND" : "Resource",
+      "NAME" : "INTERNAL_RES_SCHEDULER",
+      "PRIORITY" : 3,
+      "RESOURCEPROPERTY" : "INTERNAL",
+      "TASKUSAGE" : 
+      [
+        
+        {
+          "VALUE" : "Task_prescan"
+        },        
+        {
+          "VALUE" : "Task_receive"
+        }
+      ]
+    }
+  ],
+  "task" : 
+  [
+    
+    {
+      "ACTIVATION" : 1,
+      "AUTOSTART" : "false",
+      "KIND" : "Task",
+      "NAME" : "Task_prescan",
+      "NONPREEMPTABLE" : "true",
+      "PRIORITY" : 1,
+      "RESOURCE" : 
+      [
+        
+        {
+          "VALUE" : "INTERNAL_RES_SCHEDULER"
+        }
+      ],
+      "SCHEDULE" : "NON",
+      "STACKSIZE" : 1000,
+      "USEFLOAT" : "false",
+      "USEINTERNALRESOURCE" : "false"
+    },    
+    {
+      "ACTIVATION" : 1,
+      "AUTOSTART" : "true",
+      "AUTOSTART_S" : 
+      {
+        "APPMODE" : 
+        [
+          
+          {
+            "VALUE" : "std"
+          }
+        ]
+      },
+      "KIND" : "Task",
+      "NAME" : "Task_receive",
+      "NONPREEMPTABLE" : "true",
+      "PRIORITY" : 2,
+      "RESOURCE" : 
+      [
+        
+        {
+          "VALUE" : "INTERNAL_RES_SCHEDULER"
+        }
+      ],
+      "SCHEDULE" : "NON",
+      "STACKSIZE" : 50000,
+      "USEFLOAT" : "false",
+      "USEINTERNALRESOURCE" : "false"
+    }
+  ]
+}

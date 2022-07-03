@@ -10,20 +10,21 @@ CPU buildOptions {
     // Produce debugging information
     COMMONFLAGS = "-g";
     // All warnings on
-    //COMMONFLAGS = "-Wall";                        
+    COMMONFLAGS = "-Wall";                        
     COMMONFLAGS = "-Wno-unused-but-set-variable"; // Except unused variables
     COMMONFLAGS = "-Wmissing-field-initializers"; // Struct initialized with incorrect number of fiels
-    COMMONFLAGS = "-mcpu=cortex-m4";              // Compile for cortex-m4
+    COMMONFLAGS = "-mcpu=cortex-m4";              // Compile for cortex-m4          
     COMMONFLAGS = "-mthumb";                      // Thumb instruction set
     COMMONFLAGS = "-mfloat-abi=soft";             // Floating point numbers are computed in software
     COMMONFLAGS = "-mfpu=fpv4-sp-d16";            // Truly obscure option to set. Check http://stackoverflow.com/questions/19464556/how-to-link-gcc-options-to-the-arm-mcu-fpu-datasheet
     COMMONFLAGS = "-nostartfiles";                // Default startfiles (crt0.c) are not used
     COMMONFLAGS = "-fno-builtin";                 // Do not used built in gcc functions
-    CFLAGS = "--specs=nosys.specs";          // 
+    CFLAGS = "--specs=nano.specs";          // 
     COMMONFLAGS = "-fno-exceptions";              // No exceptions managed
     COMMONFLAGS = "-nostdlib";                    // Do not used implicitely the standard libraries to link
     COMMONFLAGS = "-ffunction-sections";          // Each function is put in its own section. Required to deleted unused code
     COMMONFLAGS = "-fdata-sections";              // Each data is put in its own section. Required to deleted unused data
+    COMMONFLAGS = "-fstack-usage";              // Each data is put in its own section. Required to deleted unused data         
 
     //CFLAGS = "-fpermissive";					  // pour les sources d'it 
     
@@ -44,14 +45,18 @@ CPU buildOptions {
     ASFLAGS = "-mcpu=cortex-m4";                  // Assemble for cortex-m4
     ASFLAGS = "-mthumb";                          // Thumb instruction set
     ASFLAGS = "--fatal-warnings";                 // A warning is an error
-    ASFLAGS = "-mfloat-abi=soft";                 // Floating point numbers are computed in software
+    ASFLAGS = "-mfloat-abi=soft";                 // Floating point numbers are computed in hardware
     ASFLAGS = "-mfpu=fpv4-sp-d16";                // Truly obscure option to set.
     // Check http://stackoverflow.com/questions/19464556/how-to-link-gcc-options-to-the-arm-mcu-fpu-datasheet
-
-    
     LDFLAGS = "--fatal-warnings";                 // A warning is an error
     LDFLAGS = "--warn-common";                    // Warn when a common symbol is combined with another common symbol
     LDFLAGS = "--no-undefined";                   // Report unresolved symbol references
     LDFLAGS = "--gc-sections";                    // Remove unused sections. Works with -ffunction-sections and -fdata-sections, see above
   };
 };
+
+// arm-none-eabi-gcc -mcpu=cortex-m4 -std=gnu11 
+// -g3 -DDEBUG -DSTM32F429I_DISC1 -DSTM32 -DSTM32F429ZITx -DSTM32F4 
+// -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage
+//  -MMD -MP
+//  --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb 

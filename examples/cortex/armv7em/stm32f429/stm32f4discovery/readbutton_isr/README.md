@@ -7,7 +7,7 @@ At start the program does nothing.
 Something happens when pushing the button on the board.
 A push on the button activates the task "read_button".
 
-The task "read_button" will toggle the BLUE led and launch or cancel the alarm "blink_alarm".
+The task "read_button" will launch or cancel the alarm "blink_alarm".
 This alarm "blink_alarm" will activate the task "blink" on expiration and start again.
 
 Leds are toggled by the following resources:

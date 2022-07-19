@@ -101,7 +101,7 @@
         }
       ],
       "SCHEDULE" : "NON",
-      "STACKSIZE" : 50000,
+      "STACKSIZE" : 30000,
       "USEFLOAT" : "false",
       "USEINTERNALRESOURCE" : "false"
     }

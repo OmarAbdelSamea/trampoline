@@ -288,10 +288,13 @@ CPU stm32f429 {
     CFILE = "V2xWEth/src/WEth.c";
     CFILE = "V2xWEth/src/Weth_PBcfg.c";
 
+    // Rec specfic
     // CFILE = "Application/LDM_SWC/src/LDM_SWC.c";
-    // CFILE = "RTE/RTE_LDM_SWC/src/Rte_LDM_SWC.c";
     // CFILE = "Application/V2x_Control_SWC/src/V2xControl_SWC.c";
+    // CFILE = "Application/V2I_Control_SWC/src/V2iControl_SWC.c";
+    // CFILE = "RTE/RTE_LDM_SWC/src/Rte_LDM_SWC.c";
     // CFILE = "RTE/RTE_V2xControl_SWC/src/Rte_V2XControl_SWC.c";
+    // CFILE = "RTE/RTE_V2iControl_SWC/src/Rte_V2iControl_SWC.c";
     // CFILE = "SPI/src/Interrupt.c";
   };
 

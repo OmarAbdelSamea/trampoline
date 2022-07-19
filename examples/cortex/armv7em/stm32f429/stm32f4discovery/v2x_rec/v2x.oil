@@ -44,14 +44,6 @@ CPU v2x {
 
   APPMODE std {};
 
-  TASK Task_prescan {
-    PRIORITY = 0;
-    AUTOSTART = FALSE;
-    ACTIVATION = 1;
-    SCHEDULE = NON; 
-    // STACKSIZE = 100;
-  };
-
   TASK Task_receive {
     PRIORITY = 1;
     AUTOSTART = TRUE {
@@ -62,18 +54,6 @@ CPU v2x {
     STACKSIZE = 50000;
   };
 
-  // ALARM Alarm_prescan {
-  //   COUNTER = SystemCounter;
-  //   ACTION = ACTIVATETASK {
-  //     TASK = Task_prescan;
-  //   };
-  //   AUTOSTART = TRUE {
-  //     APPMODE = std;
-  //     ALARMTIME = 10;
-  //     CYCLETIME = 1000;
-  //   };
-  // };
-
   ISR isr_tim4 {
     CATEGORY = 1;
     PRIORITY = 1;
@@ -83,12 +63,6 @@ CPU v2x {
   ISR isr_nrf {
     CATEGORY = 1;
     PRIORITY = 1;
-    // SOURCE = EXTI0_IRQ {
-    //   PINON0 = PA0 {
-    //     TRIGGER = FALLING;
-    //     PULL = UP;
-    //   };
-    // };
     SOURCE = EXTI0_IRQ { PIN = PA0 { TRIGGER = FALLING; PULL = UP; }; };
   };
 

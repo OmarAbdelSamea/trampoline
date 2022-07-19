@@ -16,14 +16,17 @@
 #include "Application/GeoMath_SWC/inc/GeoMath_SWC.h"
 #include "Application/Poti_SWC/inc/Poti_SWC.h"
 #include "Application/VDP_SWC/inc/VDP_SWC.h"
-#include "Application/LDM_SWC/inc/LDM_SWC.h"
 #include "Application/V2xFac_Facilities_Services_SWC/inc/V2xFac_Facilities_Services_SWC.h"
 #include "Application/V2XDenmLogic_SWC/inc/V2XDenmLogic_SWC.h"
+#include "Application/LDM_SWC/inc/LDM_SWC.h"
+#include "Application/V2x_Control_SWC/inc/V2xControl_SWC.h"
+#include "Application/V2I_Control_SWC/inc/V2iControl_SWC.h"
 
 #define GPIO_PORTG_BIT_SET_RESET_REG      (*((volatile uint32 *)0x40021818))
 
 /* uart Initialization */
 uart_Config usart1CFG;
+uart_Config usart6CFG;
 
 WEth_ConfigType configuration={1};
 
@@ -91,7 +94,7 @@ void Compare_Cam(V2xFac_CamMessageRootType* message)
 	}
 }
 
-#define APP_Task_Task_prescan_START_SEC_CODE
+#define APP_Task_Task_receive_START_SEC_CODE
 #include "tpl_memmap.h"
 FUNC(int, OS_APPL_CODE) main(void)
 {
@@ -101,7 +104,8 @@ FUNC(int, OS_APPL_CODE) main(void)
 
 	Interrupt_Config();
 	MCAL_uart_gpio_Set_Pins(usart1);
-
+	MCAL_uart_gpio_Set_Pins(usart6);
+	
 	usart1CFG.BaudRate = uart_BaudRate_115200;
 	usart1CFG.HwFlowCtl = uart_HwFlowCtl_NONE;
 	usart1CFG.IRQ_Enable = uart_IRQ_Enable_NONE;
@@ -111,7 +115,17 @@ FUNC(int, OS_APPL_CODE) main(void)
 	usart1CFG.StopBits = uart_StopBits__1;
 	usart1CFG.usart_Mode = uart_MODE_TX_RX;
 
+	usart6CFG.BaudRate = uart_BaudRate_115200;
+	usart6CFG.HwFlowCtl = uart_HwFlowCtl_NONE;
+	usart6CFG.IRQ_Enable = uart_IRQ_Enable_NONE;
+	usart6CFG.P_IRQ_CallBack = NULL;
+	usart6CFG.Parity = uart_Parity__NONE;
+	usart6CFG.Payload_Length = uart_Payload_Length_8B;
+	usart6CFG.StopBits = uart_StopBits__1;
+	usart6CFG.usart_Mode = uart_MODE_TX_RX;
+
 	MCAL_uart_Init(usart1, &usart1CFG);
+	MCAL_uart_Init(usart6, &usart6CFG);
 
 	UpdatePotiData_runnable();
 	UpdateVdpData_runnable();
@@ -139,20 +153,6 @@ FUNC(int, OS_APPL_CODE) main(void)
 	return 0;
 }
 
-TASK(Task_prescan)
-{
-	UpdatePotiData_runnable();
-	UpdateVdpData_runnable();
-	UpdatePosTime_runnable();
-
-	TerminateTask();
-}
-#define APP_Task_Task_prescan_STOP_SEC_CODE
-#include "tpl_memmap.h"
-
-#define APP_Task_Task_receive_START_SEC_CODE
-#include "tpl_memmap.h"
-
 TASK(Task_receive)
 {
 	while (1)
@@ -167,9 +167,13 @@ TASK(Task_receive)
 
 		V2xFac_DenBs_MainFunction();
 		V2xFac_CaBs_MainFunction();
+		V2xFac_RltS_MainFunction();
+		V2xFac_TlmS_MainFunction();
 
 		DenmMessage_runnable();
 		CamMessage_runnable();
+		SpatemandMapem_runnable();
+
 		updateCurrentITSStatus_runnable();
 
 		UpdatePotiData_runnable();
@@ -177,6 +181,9 @@ TASK(Task_receive)
 		UpdatePosTime_runnable();
 
 		TakeAction_runnable();
+		V2I_TakeAction_runnable();
+
+		sendAndroidAppInfo();
 	}
 }
 
